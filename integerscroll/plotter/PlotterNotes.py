@@ -125,7 +125,7 @@ class PlotterNotes(Plotter):
         yPosWithinLine = self._yPosWithinLine(el)
         yPos = yPosLineBase + yPosWithinLine
         offsetLength = el.duration.quarterLength
-        xLength = self.LocationFinder._getXLengthFromOffsetLength(offsetLength)
+        xLength = self.LocationFinder._getDefaultXLengthFromOffsetLength(offsetLength)
 
         key = self.Settings.getKey(offset)
 
@@ -495,7 +495,7 @@ class PlotterNotes(Plotter):
                 yPosCenter = (yPosLow + yPosHigh) / 2
 
                 offsetLength = el.duration.quarterLength
-                xLength = self.LocationFinder._getXLengthFromOffsetLength(offsetLength)
+                xLength = self.LocationFinder._getDefaultXLengthFromOffsetLength(offsetLength)
                 xPos = xPosStart + xLength
 
                 # self.axs[page].vlines(xPos, yPosLow, yPosHigh, alpha=.7)

@@ -14,7 +14,6 @@ class CanvasCreator:
 
         self.yMin = self.Settings.yMin
         self.yMax = self.Settings.yMax
-        self.heightLine = self.yMax - self.yMin + Settings.vMarginLineTop
 
         self.figs = []
         self.axs = []
@@ -23,9 +22,17 @@ class CanvasCreator:
 
         self._createCanvas()
 
-    def saveFig(self, pathName):
+    def saveFig(self, pathName, maxXPos):
 
-        self.figs[0].savefig(pathName, dpi=1000)
+        yPosLowest = 1 - (self.yMax - self.yMin + 2 * self.Settings.vMarginLineTop)
+        heightStart = self.Settings.heightA4 * yPosLowest
+
+        xPosHighest = maxXPos + 2 * 0.01
+        widthEnd = self.Settings.widthA4 * xPosHighest
+
+        bbox = Bbox([[0, heightStart], [widthEnd, self.Settings.heightA4]])
+
+        self.figs[0].savefig(pathName, dpi=1000, bbox_inches=bbox)
 
         # with PdfPages(pathName) as pdf:
         #     for fig in self.figs:

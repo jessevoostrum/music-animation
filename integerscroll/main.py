@@ -33,10 +33,14 @@ class Visualiser:
     def saveFig(self, dirName=None):
         title = self.getSongTitle()
         if not dirName:
-            pathName = title + '.png'
+            pathName = title
         else:
-            pathName = dirName + '/' + title + '.png'
-        self.CanvasCreator.saveFig(pathName)
+            pathName = dirName + '/' + title
+        pathName += '.pdf'
+
+        # self.figs[0].savefig(pathName, dpi=1000, bbox_inches='tight')
+
+        self.CanvasCreator.saveFig(pathName, self.LocationFinder.getMaxXPos())
 
     def _preprocessStreamObj(self, streamObj):
 

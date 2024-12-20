@@ -6,7 +6,7 @@ pathSong = "/Users/jvo/Downloads/8bars.musicxml"
 
 settings = {}
 settings["measuresPerLine"] = 4
-settings["subdivision"] = 0
+settings["subdivision"] = 1
 settings["lyrics"] = True
 
 vis = Visualiser(pathSong, settings)

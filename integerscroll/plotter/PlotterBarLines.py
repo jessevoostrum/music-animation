@@ -196,7 +196,7 @@ class PlotterBarLines(Plotter):
 
             yPosHigh = yPosLineBase + self.Settings.yMax  #TODO(add extension)
 
-            xPosEnd = xPosStart + self.LocationFinder._getXLengthFromOffsetLength(measure.quarterLength)
+            xPosEnd = xPosStart + self.LocationFinder._getDefaultXLengthFromOffsetLength(measure.quarterLength)
 
             lineWidth = 1
             self.axs[page].hlines(yPosHigh + 0.02, xPosStart, xPosEnd,
@@ -225,7 +225,7 @@ class PlotterBarLines(Plotter):
 
                 page, yPosLineBase, xPos = self.LocationFinder.getLocation(offset, start=True)
 
-                xPos += self.LocationFinder._getXLengthFromOffsetLength(el.getOffsetInHierarchy(measure))
+                xPos += self.LocationFinder._getDefaultXLengthFromOffsetLength(el.getOffsetInHierarchy(measure))
 
                 yPos = yPosLineBase + self.Settings.yMax + self.Settings.heightBarline0Extension - self.Settings.capsizeNote
 
@@ -323,7 +323,7 @@ class PlotterBarLines(Plotter):
 
                     page, yPosLineBase, xPos = self.LocationFinder.getLocation(measure.offset, start=True)
 
-                    xPos += self.LocationFinder._getXLengthFromOffsetLength(measure.quarterLength / 2)
+                    xPos += self.LocationFinder._getDefaultXLengthFromOffsetLength(measure.quarterLength / 2)
 
                     yPos = yPosLineBase + self.Settings.yMax + self.Settings.heightBarline0Extension - self.Settings.capsizeNote
 
